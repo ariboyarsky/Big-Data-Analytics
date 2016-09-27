@@ -1,12 +1,18 @@
-rm(list = ls())
+graph.edges <- read.csv(file = '0.edges',
+                        sep=" ", header=FALSE,
+                        col.names=c("source", "target"))
+#get edges
+graph.e <- graph.edges - min(graph.edges) + 1
+#get nodes
+graph.n <- data.frame(id=seq(max(graph.e) - min(graph.e) + 1))
 
-library(igraph)
+graph.n$group <- 1
 
-data <- list.files("facebook")
+#import into igraph
+g = graph.data.frame(graph.edges, directed=TRUE, vertices=graph.nodes)
 
-setwd("facebook")
-for(i in 1:length(data)) assign(data[i], read.csv(data[i]))
+#simplify code
+g2 = simplify(g)
 
-read.table(data[5])
-
-graph <- graph.adjacency(data[0])
+#plot
+plot(g2)
