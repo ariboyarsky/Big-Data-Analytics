@@ -15,7 +15,7 @@ graph.n <- data.frame(id=seq(max(graph.e) - min(graph.e) + 1))
 graph.n$group <- 1
 
 #import into igraph
-g = graph.data.frame(graph.e, directed=TRUE, vertices=graph.n)
+g = graph.data.frame(graph.e, directed=FALSE, vertices=graph.n)
 
 #simplify code
 g2 = simplify(g)
@@ -76,6 +76,9 @@ closeness(g2)
 
 #find loop edges
 count_multiple(g2)
+
+#fine components of graph
+components(g2)
 #----------------------------------------------------------------------
 #Question 5
 
@@ -85,7 +88,8 @@ alpha_centrality(g2)
 
 #TODO: go from this to longest path
 #longest path
-distance_table(g2)
+distances(g2, v = components(g2)$membership)
+help(distances)
 
 #TODO: lookover for accuracy
 #largest clique
