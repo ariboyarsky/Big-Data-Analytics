@@ -8,6 +8,6 @@ Isaac Gritz
 
 Clare Lohrmann 
 
-Abdul Sheikhnureldin
+Abdul Sheikhnureldin (abduls@gwu.edu)
 
 Sameer Rau
