@@ -31,7 +31,7 @@ V(g2)
 #get edges
 edges(g2)
 
-#find vertex attributes
+#find vertex attributes, did not load attributes so we should not expect much here
 vertex_attr(g2)
 
 #check if the graph is simple (does not have loops or multiple edges between verticies)
@@ -65,13 +65,11 @@ is.directed(g2)
 #is the graph weighted
 is.weighted(g2)
 
-is.simple(g2)
+# is this graph simple, prior to simplification
+is.simple(g)
 
 #is the graph connected
 is.connected(g2)
-
-#get radius of graph
-radius(g2)
 
 #get closeness centrality of vertices
 closeness(g2)
@@ -84,15 +82,14 @@ components(g2)
 #----------------------------------------------------------------------
 #Question 5
 
-#TODO: not running
+
 #determine central person
 ac1 = alpha_centrality(g)
-ac1
-#TODO: go from this to longest path
+tail(sort(ac1),5)
+
+#TODO: check for accuracy
 #longest path
-g2.1 <- which.max(sapply(decompose.graph(g), vcount))
-                  
-distances(g2.1)
+which.max(distances(g2))
 
 #TODO: lookover for accuracy
 #largest clique
@@ -105,7 +102,7 @@ ego(g2, gorder(g), V(g2))
 
 # power centrality
 library(Matrix)
-power_centrality(g, nodes = V(g), sparse = TRUE, exp=1)
+power_centrality(g, nodes = V(g))
 
 
 
