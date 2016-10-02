@@ -65,6 +65,8 @@ is.directed(g2)
 #is the graph weighted
 is.weighted(g2)
 
+is.simple(g2)
+
 #is the graph connected
 is.connected(g2)
 
@@ -84,24 +86,27 @@ components(g2)
 
 #TODO: not running
 #determine central person
-alpha_centrality(g2)
-
+ac1 = alpha_centrality(g)
+ac1
 #TODO: go from this to longest path
 #longest path
-distances(g2, v = components(g2)$membership)
-help(distances)
+g2.1 <- which.max(sapply(decompose.graph(g), vcount))
+                  
+distances(g2.1)
 
 #TODO: lookover for accuracy
 #largest clique
-largest.cliques(g2)
+largest.cliques(g)
 #Hence, the largest click is 15?
 
 #ego
 ego(g2, gorder(g), V(g2))
 
-# TODO: failing to run
+
 # power centrality
-power_centrality(g2, nodes = V(g2))
+library(Matrix)
+power_centrality(g, nodes = V(g), sparse = TRUE, exp=1)
+
 
 
 
