@@ -1,3 +1,16 @@
+---
+title: "Project1"
+author: "Ari Boyarsky, Isaac Gritz, Clare Lohrmann, Sameer Rau, Abdul Sheikhnureldin"
+date: "October 3, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Setup:
+
+```{r, echo=TRUE}
 #clean workspace
 rm(list = ls())
 
@@ -20,10 +33,15 @@ g = graph.data.frame(graph.e, directed=FALSE, vertices=graph.n)
 #simplify code
 g2 = simplify(g)
 
-#--------------------------------------------------------------------------------
-#Question 3. Explore with some functions from ppt
 #plot
 plot(g2)
+```
+
+# Question 3:
+
+**Explore with some functions from ppt**
+
+```{r, echo=TRUE}
 
 #get verticies
 V(g2)
@@ -43,12 +61,16 @@ degree(g2, "198")
 degree(g2)
 astrocollab <- upgrade_graph(g)
 plot(astrocollab)
+```
 
-#----------------------------------------------------------------------------
-#Question 4 Explore 10 functions
+# Question 4 
 
-#fidn eccentricity of verticies
-eccentricity(g2)
+**Explore 10 functions**
+
+```{r, echo=TRUE}
+
+#find eccentricity of verticies, we are using head here so the markdown file does not get too long
+head(eccentricity(g2))
 
 #dfs with node 1 as root
 dfs(g2, 1)
@@ -71,18 +93,18 @@ is.simple(g)
 #is the graph connected
 is.connected(g2)
 
-#get closeness centrality of vertices
-closeness(g2)
+#get closeness centrality of vertices, we are using head here so the markdown file does not get too long
+head(closeness(g2))
 
-#find loop edges
-count_multiple(g2)
+#find loop edges, we are using head here so the markdown file does not get too long
+head(count_multiple(g2))
 
 #fine components of graph
 components(g2)
-#----------------------------------------------------------------------
-#Question 5
+```
+# Question 5
 
-
+```{r, echo=TRUE}
 #determine central person
 ac1 = alpha_centrality(g)
 tail(sort(ac1),5)
@@ -92,17 +114,16 @@ tail(sort(ac1),5)
 which.max(distances(g2))
 
 #TODO: lookover for accuracy
-#largest clique
-largest.cliques(g)
+#largest clique, we are using head here so the markdown file does not get too long
+head(largest.cliques(g))
 #Hence, the largest click is 15?
 
-#ego
-ego(g2, gorder(g), V(g2))
+#ego, we are using head here so the markdown file does not get too long
+head(ego(g2, gorder(g2), V(g2)))
 
 
-# power centrality
-power_centrality(g, nodes = V(g))
-
-
+# power centrality, we are using head here so the markdown file does not get too long
+head(power_centrality(g, nodes = V(g)))
+```
 
 
