@@ -67,38 +67,56 @@ plot(astrocollab)
 
 **Explore 10 functions**
 
+The fucntion `eccentricity()` calulcates the shortest path distance from the farthest other node in the graph, for each node. 
 ```{r, echo=TRUE}
 
 #find eccentricity of verticies, we are using head here so the markdown file does not get too long
 head(eccentricity(g2))
-
+```
+The function `dfs()`, preforms a depth-first search from the root node, in this case 1. This is an algorithm to traverse the graph. `bfs()` is another function that employs an algorthim, breadth-first search, this algorithm attempts to go to each edge.
+```{r, echo=TRUE}
 #dfs with node 1 as root
 dfs(g2, 1)
 
 #bfs with node 1 as root
 bfs(g2, 1)
+```
+
+`count_triangles()` attempts to count how many triangles a node is a part of. A triangle, is a part of a graph that has a cycle with 3 nodes and 3 edges.
+```{r, echo=TRUE}
 
 #count triangles a vertex is a part of
 count_triangles(g2)
+```
 
+`is.directed()` checks to see if a graph is directed. `is.weighted()` checks to see if a graph has weights.
+`is.connected()` checks to see if a graph is connected (i.e. has a path between every pair of vertices).
+
+```{r, echo=TRUE}
 #is the graph directed
 is.directed(g2)
 
 #is the graph weighted
 is.weighted(g2)
 
-# is this graph simple, prior to simplification
-is.simple(g)
-
 #is the graph connected
 is.connected(g2)
+```
 
+`head()` retrieves the first few results of a fucntion. `closeness()` computes the closeness cnetrality, how many steps to get to every other node from another node. 
+```{r, echo=TRUE}
 #get closeness centrality of vertices, we are using head here so the markdown file does not get too long
 head(closeness(g2))
+```
+`count_multiple()` counts the multiple edges a node has, edges that have the same head and tail vertices.
 
+```{r, echo=TRUE}
 #find loop edges, we are using head here so the markdown file does not get too long
 head(count_multiple(g2))
+```
 
+`components()` finds connected components of a graph.
+```{r, echo=TRUE} 
 #fine components of graph
 components(g2)
 ```
@@ -109,14 +127,13 @@ components(g2)
 ac1 = alpha_centrality(g)
 tail(sort(ac1),5)
 
-#TODO: check for accuracy
-#longest path
+#longest path, distances creates the distance table, which.max picks out highest non-inf value
 which.max(distances(g2))
 
-#TODO: lookover for accuracy
+
 #largest clique, we are using head here so the markdown file does not get too long
 head(largest.cliques(g))
-#Hence, the largest click is 15?
+# Hence, the largest click is 15
 
 #ego, we are using head here so the markdown file does not get too long
 head(ego(g2, gorder(g2), V(g2)))
