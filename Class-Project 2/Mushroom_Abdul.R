@@ -2,6 +2,7 @@ library(aod)
 library(ggplot2)
 library(psych)
 library(gridExtra)
+library(vcd)
 
 mr<-read.table(file.path("agaricus-lepiota.data"),sep=",", header=FALSE)
 str(mr)
@@ -93,17 +94,7 @@ features2 <- subset(mr, select = c(gcolor,gsize,rnumber,ssabove,ssbelow,rtype))
 kmeans(features2, 4)
 
 #training and test
-
-#Reasses this
-mush = c(mr$edible,mr$`cap-shape`,mr$`cap-surface`)
-mush
-kmeans(mush, 3)
-
-
-irisCluster <- kmeans(mush, 3)
-irisCluster$cluster <- as.factor(irisCluster$cluster)
-ggplot(mush, aes(mr$V1,mr$V2,mr$V3, color = iris$cluster)) + geom_point()
-
-irisCluster$cluster <- as.factor(irisCluster$cluster)
-ggplot(iris, aes(Petal.Length, Petal.Width, color = iris$cluster)) + geom_point()
-
+library(kernlab)
+#Would this work for training using an SVM?
+svp <- ksvm(features2, type="C-svc", kernel='vanilladot',C=100,scaled=c())
+svp
